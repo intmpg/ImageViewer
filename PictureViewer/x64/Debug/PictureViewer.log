@@ -1,26 +1,26 @@
-﻿Сборка начата 13.11.2015 16:39:53.
-     1>Проект "C:\Users\НОУТБУК\Documents\Visual Studio 2015\Projects\PictureViewer\PictureViewer\PictureViewer.vcxproj" в узле 2 (целевые объекты Build).
+﻿Сборка начата 07.12.2015 23:39:02.
+     1>Проект "C:\Users\123\Desktop\ImageViewer-master\PictureViewer\PictureViewer.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
-         C:\Program Files (x86)\VisualStudio2015\VC\bin\x86_amd64\CL.exe /c /I"C:\Program Files\VisualStudio2015\SFML-2.3.2\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt PictureViewer.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /I"C:\SFML-Visual_Studio2015RCx64\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt PictureViewer.cpp
          PictureViewer.cpp
-     1>c:\users\ноутбук\documents\visual studio 2015\projects\pictureviewer\pictureviewer\pictureviewer.cpp(37): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-     1>c:\users\ноутбук\documents\visual studio 2015\projects\pictureviewer\pictureviewer\pictureviewer.cpp(50): warning C4244: аргумент: преобразование "unsigned int" в "float", возможна потеря данных
-     1>c:\users\ноутбук\documents\visual studio 2015\projects\pictureviewer\pictureviewer\pictureviewer.cpp(59): warning C4244: аргумент: преобразование "unsigned int" в "float", возможна потеря данных
-     1>c:\users\ноутбук\documents\visual studio 2015\projects\pictureviewer\pictureviewer\pictureviewer.h(35): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-         c:\users\ноутбук\documents\visual studio 2015\projects\pictureviewer\pictureviewer\pictureviewer.cpp(107): note: см. ссылку на создание экземпляров функции шаблон при компиляции "bool PictureViewer::checkClicking<sf::Sprite>(T &,sf::Vector2i &)"
+     1>c:\users\123\desktop\imageviewer-master\pictureviewer\pictureviewer.cpp(36): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+     1>c:\users\123\desktop\imageviewer-master\pictureviewer\pictureviewer.cpp(49): warning C4244: аргумент: преобразование "unsigned int" в "float", возможна потеря данных
+     1>c:\users\123\desktop\imageviewer-master\pictureviewer\pictureviewer.cpp(58): warning C4244: аргумент: преобразование "unsigned int" в "float", возможна потеря данных
+     1>c:\users\123\desktop\imageviewer-master\pictureviewer\pictureviewer.h(34): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+         c:\users\123\desktop\imageviewer-master\pictureviewer\pictureviewer.cpp(109): note: см. ссылку на создание экземпляров функции шаблон при компиляции "bool PictureViewer::checkClicking<sf::Sprite>(T &,sf::Vector2i &)"
                  with
                  [
                      T=sf::Sprite
                  ]
        Link:
-         C:\Program Files (x86)\VisualStudio2015\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\НОУТБУК\Documents\Visual Studio 2015\Projects\PictureViewer\x64\Debug\PictureViewer.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files\VisualStudio2015\SFML-2.3.2\lib" "sfml-audio-d.lib" "sfml-graphics-d.lib" "sfml-network-d.lib" "sfml-system-d.lib" "sfml-window-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\НОУТБУК\Documents\Visual Studio 2015\Projects\PictureViewer\x64\Debug\PictureViewer.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\НОУТБУК\Documents\Visual Studio 2015\Projects\PictureViewer\x64\Debug\PictureViewer.lib" /MACHINE:X64 x64\Debug\Buttons.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\123\Desktop\ImageViewer-master\x64\Debug\PictureViewer.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SFML-Visual_Studio2015RCx64\lib" "sfml-audio-d.lib" "sfml-graphics-d.lib" "sfml-network-d.lib" "sfml-system-d.lib" "sfml-window-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\123\Desktop\ImageViewer-master\x64\Debug\PictureViewer.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\123\Desktop\ImageViewer-master\x64\Debug\PictureViewer.lib" /MACHINE:X64 x64\Debug\Buttons.obj
          x64\Debug\Main.obj
          x64\Debug\Picture.obj
          x64\Debug\PictureViewer.obj
          x64\Debug\stdafx.obj
-         PictureViewer.vcxproj -> C:\Users\НОУТБУК\Documents\Visual Studio 2015\Projects\PictureViewer\x64\Debug\PictureViewer.exe
-     1>Сборка проекта "C:\Users\НОУТБУК\Documents\Visual Studio 2015\Projects\PictureViewer\PictureViewer\PictureViewer.vcxproj" завершена (целевые объекты Build).
+         PictureViewer.vcxproj -> C:\Users\123\Desktop\ImageViewer-master\x64\Debug\PictureViewer.exe
+     1>Сборка проекта "C:\Users\123\Desktop\ImageViewer-master\PictureViewer\PictureViewer.vcxproj" завершена (целевые объекты Build).
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:02.52
+Затраченное время: 00:00:01.46

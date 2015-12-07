@@ -4,17 +4,17 @@ const int MAX_X_ZOOM = 4;
 const int RANGE_FROM_WINDOW_EDGES = 10;
 
 Buttons::Buttons() 
-	: array_size(), i(0), scale(1)
+	: count_of_pictures(), menu_index(0), scale(1)
 {
-	texture[0].loadFromFile("img/left.png");
+	texture[0].loadFromFile("img/switchLeft.png");
 	sprite[0].setTexture(texture[0]);
 	sprite[0].setScale(1, 0.5);
 
-	texture[1].loadFromFile("img/right.png");
+	texture[1].loadFromFile("img/switchRight.png");
 	sprite[1].setTexture(texture[1]);
 	sprite[1].setScale(1, 0.5);
 
-	texture[2].loadFromFile("img/plus-24572__180.png");
+	texture[2].loadFromFile("img/incZoom-24572__180.png");
 	sprite[2].setTexture(texture[2]);
 	sprite[2].setTextureRect(sf::IntRect(0, 0, 90, 90));
 	sprite[2].setScale(0.5, 0.5);
@@ -32,28 +32,28 @@ void Buttons::update(sf::Vector2u window)
 	sprite[3].setPosition(window.x - sprite[1].getGlobalBounds().width - RANGE_FROM_WINDOW_EDGES, window.y / 2);
 }
 
-void Buttons::left()
+void Buttons::switchLeft()
 {
 	scale = 1;
-	if (i - 1 >= 0)
-		i--;
+	if (menu_index - 1 >= 0)
+		menu_index--;
 	else 
-		i = array_size - 1;
+		menu_index = count_of_pictures - 1;
 }
-void Buttons::right()
+void Buttons::switchRight()
 {
 	scale = 1;
-	if (i + 1 < array_size)
-		i++;
+	if (menu_index + 1 < count_of_pictures)
+		menu_index++;
 	else 
-		i = 0;
+		menu_index = 0;
 }
-void Buttons::plus()
+void Buttons::incZoom()
 {
 	if (scale <= MAX_X_ZOOM)
 		++scale;
 }
-void Buttons::minus()
+void Buttons::dcrZoom()
 {
 	if (scale > 1)
 		--scale;

@@ -9,14 +9,14 @@ struct Buttons
 
 	void update(sf::Vector2u window);
 
-	void left();
-	void right();
-	void plus();
-	void minus();
+	void switchLeft();
+	void switchRight();
+	void incZoom();
+	void dcrZoom();
 
 	sf::Texture texture[BUTTONS - 1];
 	sf::Sprite sprite[BUTTONS];
-	int array_size;
-	int i;
+	int count_of_pictures;
+	int menu_index;
 	float scale;
 };

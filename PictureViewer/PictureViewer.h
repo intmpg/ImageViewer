@@ -20,8 +20,7 @@ struct PictureViewer
 	std::vector<std::string> image_names_vector;
 	sf::Texture current_texture;
 
-	float dx;
-	float dy;
+	sf::Vector2f detla_coord;
 	bool is_pressed;
 	sf::Mouse mouse;
 	sf::Vector2f start_position;

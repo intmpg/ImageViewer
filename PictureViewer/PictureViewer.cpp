@@ -6,8 +6,7 @@
 const sf::Vector2u WINDOW_SIZE{ 1024 , 668 };
 
 PictureViewer::PictureViewer() 
-	:dx(0)
-	,dy(0)
+	:detla_coord()
 	,is_pressed(false)
 	,mouse()
 	,start_position()
@@ -34,7 +33,7 @@ void PictureViewer::run()
 	for (int i = 0; i < image_names_vector.size(); i++)
 		textures.emplace_back(texture(image_names_vector[i], current_texture));
 
-	buttons.array_size = (textures.size());
+	buttons.count_of_pictures = (textures.size());
 
 	while (window.isOpen())
 	{
@@ -42,7 +41,7 @@ void PictureViewer::run()
 		mouse_position = mouse.getPosition(window);
 		window_size = window.getSize();
 
-		Picture picture(textures[buttons.i]);
+		Picture picture(textures[buttons.menu_index]);
 
 		picture.update(buttons.scale, window_size);
 		buttons.update(window_size);
@@ -60,21 +59,24 @@ void PictureViewer::run()
 			{
 				if (picture_bounds.width < window_size.x)
 				{
-					picture.sprite.setPosition(start_position.x, mouse_position.y - dy);
-					start_position = { picture.sprite.getPosition().x, mouse_position.y - dy };
+					picture.sprite.setPosition(start_position.x, mouse_position.y - detla_coord.y);
+					start_position = { picture.sprite.getPosition().x, mouse_position.y - detla_coord.y };
 				}
 				else if (picture_bounds.height < window_size.y)
 				{
-					picture.sprite.setPosition(mouse_position.x - dx, start_position.y);
-					start_position = { mouse_position.x - dx, picture.sprite.getPosition().y };
+					picture.sprite.setPosition(mouse_position.x - detla_coord.x, start_position.y);
+					start_position = { mouse_position.x - detla_coord.x, picture.sprite.getPosition().y };
 				}
 				else
 				{
-					start_position = { mouse_position.x - dx,mouse_position.y - dy };
-					picture.sprite.setPosition(mouse_position.x - dx, mouse_position.y - dy);
+					start_position = { mouse_position.x - detla_coord.x,mouse_position.y - detla_coord.y };
+					picture.sprite.setPosition(mouse_position.x - detla_coord.x, mouse_position.y - detla_coord.y);
 				}
 			}
 		}
+		if (start_position == sf::Vector2f{})
+			start_position = { float(window_size.x / 2), float(window_size.y / 2) };
+
 		processEvents(picture.sprite);
 		render(view, picture.sprite);
 	}
@@ -94,10 +96,10 @@ void PictureViewer::processEvents(sf::Sprite& sprite)
 			switch (event.key.code)
 			{
 			case sf::Keyboard::Left:
-				buttons.left();
+				buttons.switchLeft();
 				break;
 			case sf::Keyboard::Right:
-				buttons.right();
+				buttons.switchRight();
 				break;
 			}
 			break;
@@ -106,8 +108,8 @@ void PictureViewer::processEvents(sf::Sprite& sprite)
 			{
 				if (checkClicking(sprite, mouse_position))
 				{
-					dx = mouse_position.x - start_position.x;
-					dy = mouse_position.y - start_position.y;
+					detla_coord.x = mouse_position.x - start_position.x;
+					detla_coord.y = mouse_position.y - start_position.y;
 					is_pressed = true;
 				}
 			}
@@ -118,24 +120,20 @@ void PictureViewer::processEvents(sf::Sprite& sprite)
 				if (checkClicking(buttons.sprite[0], mouse_position))
 				{
 					start_position = {};
-					buttons.left();
+					buttons.switchLeft();
 				}
 				else if (checkClicking(buttons.sprite[1], mouse_position))
 				{
 					start_position = {};
-					buttons.right();
+					buttons.switchRight();
 				}
 				else if (checkClicking(buttons.sprite[2], mouse_position))
 				{
-					if (start_position == sf::Vector2f{})
-						start_position = { float(window_size.x / 2), float(window_size.y / 2) };
-					buttons.plus();
+					buttons.incZoom();
 				}
 				else if (checkClicking(buttons.sprite[3], mouse_position))
 				{
-					if (start_position == sf::Vector2f{}) 
-						start_position = { float(window_size.x / 2), float(window_size.y / 2) };
-					buttons.minus();
+					buttons.dcrZoom();
 				}
 				if (is_pressed)
 					is_pressed = false;
@@ -148,7 +146,7 @@ void PictureViewer::processEvents(sf::Sprite& sprite)
 void PictureViewer::render(sf::View& view, sf::Sprite& sprite)
 {
 	window.clear(sf::Color::White);
-	window.setTitle(image_names_vector[buttons.i]);
+	window.setTitle(image_names_vector[buttons.menu_index]);
 	window.setView(view);
 
 	window.draw(sprite);
@@ -168,7 +166,7 @@ std::vector<std::string> PictureViewer::getImageVector(std::vector<std::string> 
 				std::string file_name = std::string(list_files.cFileName);
 				for (std::string str : ext_array)
 				{
-					if (file_name.rfind(str) != -1)
+					if (file_name.rfind(str) != -1 && file_name.rfind('.') ==	 file_name.rfind(str))
 					{
 						is_image = true;
 						break;
